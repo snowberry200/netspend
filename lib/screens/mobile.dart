@@ -23,22 +23,13 @@ class _MobileScreenState extends State<MobileScreen> {
   final passwordControllerKey = GlobalKey<PasswordTextfieldState>();
   final nameControllerKey = GlobalKey<NameTextFormWidgetState>();
   final GlobalKey<FormState> formKey = GlobalKey();
+  final String welcome = "welcome back";
+  final String access = "Authenticating";
+  final String accCreated = "Account created for";
   bool isSignedIn = true;
 
   Future<void> _handleLogin() async {
     if (formKey.currentState!.validate()) {
-      //         email: nameController.text.trim(),
-      //         password: passwordController.text.trim()),
-      //     builder: (context, snapshot) {
-      //       if (snapshot.connectionState ==
-      //           ConnectionState.done) {
-      //         return const TextfieldContainer();
-      //       } else {
-      //         return const CircularProgressIndicator(
-      //             color: Colors.blue);
-      //       }
-      //     });
-
       StatementValidator.authValidateMessage(context, "Authenticating");
 
       final username =
@@ -93,10 +84,10 @@ class _MobileScreenState extends State<MobileScreen> {
           );
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         } else if (state is Authenticated) {
-          StatementValidator.showLoggedInnStatement(context, "welcome back");
+          StatementValidator.showLoggedInnStatement(context, welcome);
         } else if (state is SignUpSuccess) {
           StatementValidator.showSignUpMessage(
-              context, "Account created for ${state.name}");
+              context, '$accCreated ${state.name}');
         }
       },
       builder: (context, state) {

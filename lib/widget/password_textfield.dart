@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netspend/widget/validator.dart';
 
 class PasswordTextfield extends StatefulWidget {
   const PasswordTextfield({super.key});
@@ -16,13 +17,9 @@ class PasswordTextfieldState extends State<PasswordTextfield> {
       obscureText: true,
       //obscuringCharacter: '*#',
       validator: (password) {
-        if (password!.isNotEmpty && password.length < 5) {
-          return 'Password cant be less than 5 characters';
-        } else if (password.isEmpty) {
-          return 'Password field can not be empty';
-        } else {
-          return null;
-        }
+        return StatementValidator.validatePassword(
+          password: passwordController.text,
+        );
       },
       textAlign: TextAlign.start,
       controller: passwordController = TextEditingController(),

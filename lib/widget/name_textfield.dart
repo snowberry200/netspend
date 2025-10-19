@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netspend/widget/validator.dart';
 
 class NameTextFormWidget extends StatefulWidget {
   const NameTextFormWidget({super.key});
@@ -14,13 +15,9 @@ class NameTextFormWidgetState extends State<NameTextFormWidget> {
   Widget build(BuildContext context) {
     return TextFormField(
       validator: (name) {
-        if (name!.isNotEmpty && name.length < 4) {
-          return 'Please enter a correct name';
-        } else if (name.isEmpty) {
-          return 'name field can not be empty';
-        } else {
-          return null;
-        }
+        return StatementValidator.validateName(
+          name: nameController.text,
+        );
       },
       textAlign: TextAlign.start,
       controller: nameController,

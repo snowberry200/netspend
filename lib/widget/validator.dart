@@ -33,4 +33,31 @@ class StatementValidator {
       ),
     );
   }
+
+  static String? validateName({required String? name}) {
+    if (name == null || name.isEmpty) {
+      return 'Name field cannot be empty';
+    } else if (name.length < 4) {
+      return 'Please enter a correct name (min 4 characters)';
+    }
+    return null;
+  }
+
+  static String? validateUsername({required String? username}) {
+    if (username == null || username.isEmpty) {
+      return 'Username field cannot be empty';
+    } else if (username.length < 4) {
+      return 'Please enter a correct username (min 4 characters)';
+    }
+    return null;
+  }
+
+  static String? validatePassword({required String? password}) {
+    if (password == null || password.isEmpty) {
+      return 'Password field cannot be empty';
+    } else if (password.length < 5) {
+      return 'Password cannot be less than 5 characters';
+    }
+    return null;
+  }
 }

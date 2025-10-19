@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netspend/widget/validator.dart';
 
 class UserNameTextField extends StatefulWidget {
   const UserNameTextField({super.key});
@@ -17,13 +18,7 @@ class UserNameTextFieldState extends State<UserNameTextField> {
         children: [
           TextFormField(
             validator: (username) {
-              if (username!.isNotEmpty && username.length < 4) {
-                return 'Please enter a correct username';
-              } else if (username.isEmpty) {
-                return 'username field can not be empty';
-              } else {
-                return null;
-              }
+              return StatementValidator.validateUsername(username: username);
             },
             textAlign: TextAlign.start,
             controller: userNameController,
