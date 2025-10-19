@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "51443739236",
+    "firebase_url": "https://netspend-dea37-default-rtdb.firebaseio.com",
+    "project_id": "netspend-dea37",
+    "storage_bucket": "netspend-dea37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51443739236:android:d454c0117d0f2892f20d71",
+        "android_client_info": {
+          "package_name": "com.enkasa.netspend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51443739236-l83ea539lj0oqq7jcqj5otop656tmram.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAzvYqbQvobi2T0iMtbRO0-5nviFPRhL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51443739236-l83ea539lj0oqq7jcqj5otop656tmram.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "51443739236-hbmjpvgjjchgb8v1pl27s18ud30p0i4g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.citibanker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51443739236:android:5d33ddef42b44c38f20d71",
+        "android_client_info": {
+          "package_name": "com.example.citibanker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51443739236-l83ea539lj0oqq7jcqj5otop656tmram.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAzvYqbQvobi2T0iMtbRO0-5nviFPRhL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51443739236-l83ea539lj0oqq7jcqj5otop656tmram.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "51443739236-hbmjpvgjjchgb8v1pl27s18ud30p0i4g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.citibanker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
