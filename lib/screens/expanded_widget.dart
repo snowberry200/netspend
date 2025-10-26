@@ -130,7 +130,7 @@ class _ExpandedWidgetState extends State<ExpandedWidget> {
                   children: [
                     Center(
                       child: Container(
-                          height: 500,
+                          height: isSignedIn ? 400 : 500,
                           padding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 30),
                           decoration: const BoxDecoration(
@@ -209,12 +209,10 @@ class _ExpandedWidgetState extends State<ExpandedWidget> {
                                           ),
                                     const Padding(
                                       padding: EdgeInsets.only(
-                                          left: 60, top: 30, right: 60),
-                                      child: Center(
-                                        child: Text(
-                                          'Forgot your user name and password?',
-                                          style: TextStyle(fontSize: 15),
-                                        ),
+                                          left: 20, top: 30, right: 20),
+                                      child: Text(
+                                        'Forgot your user name and password?',
+                                        style: TextStyle(fontSize: 15),
                                       ),
                                     )
                                   ]),

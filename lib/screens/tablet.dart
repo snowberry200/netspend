@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netspend/widget/username_textfield.dart';
+import 'package:netspend/screens/expanded_widget.dart';
 
 class TabletScreen extends StatelessWidget {
   const TabletScreen({super.key});
@@ -10,86 +9,7 @@ class TabletScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return Column(children: [
       navBar(),
-      Expanded(
-        flex: 1,
-        child: Container(
-            padding: const EdgeInsets.only(top: 60, bottom: 0),
-            decoration: const BoxDecoration(color: Color(0XFFEEEEEE)),
-            child: Center(
-                child: ScrollConfiguration(
-              behavior:
-                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
-              child: ListView(
-                children: [
-                  Center(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 50, horizontal: 20),
-                      decoration: const BoxDecoration(
-                        color: CupertinoColors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5),
-                        ),
-                      ),
-                      width: width / 1.5,
-                      child: const Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding:
-                                EdgeInsets.only(left: 50.0, right: 50, top: 20),
-                            child: Text('Account Login',
-                                style: TextStyle(
-                                    letterSpacing: 1.5,
-                                    fontSize: 23,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          UserNameTextField(),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 30),
-                  const Center(
-                    child: Text(
-                      "Don't have a Card? Sign Up Today",
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ),
-                  const SizedBox(height: 30),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 80, right: 80, bottom: 20),
-                    child: Center(
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            backgroundColor: const Color(0XFFEEEEEE),
-                            side: const BorderSide(
-                                width: 2,
-                                color: Color.fromARGB(255, 68, 171, 183)),
-                            fixedSize: const Size(350, 40)),
-                        onPressed: () async {
-                          // }
-                        },
-                        child: const Center(
-                          child: Text(' Order A New Card',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(255, 68, 171, 183),
-                              )),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ))),
-      ),
+      ExpandedWidget(width: width),
     ]);
   }
 
