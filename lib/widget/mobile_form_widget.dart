@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netspend/bloc/auth_bloc.dart';
 import 'package:netspend/bloc/auth_event.dart';
 import 'package:netspend/bloc/auth_state.dart';
-import 'package:netspend/database.dart';
+import 'package:netspend/database/database.dart';
 import 'package:netspend/widget/name_textfield.dart';
 import 'package:netspend/widget/password_textfield.dart';
 import 'package:netspend/widget/username_textfield.dart';
@@ -26,9 +26,7 @@ class _MobileFormWidgetState extends State<MobileFormWidget> {
   final String access = "Authenticating";
   final String accCreated = "Account created for";
 
-  bool isSignedIn = true;
-
-  Future<void> _handleLogin() async {
+  Future<void> _handleLogin(BuildContext context, bool isSignedIn) async {
     if (formKey.currentState!.validate()) {
       StatementValidator.authValidateMessage(context, "Authenticating");
 
@@ -43,24 +41,24 @@ class _MobileFormWidgetState extends State<MobileFormWidget> {
 
       await Database().getInfo(username, password);
 
-      if (mounted) {
-        if (isSignedIn) {
+      if (isSignedIn) {
+        if (context.mounted) {
           context
               .read<AuthBloc>()
               .add(LoginRequested(email: username, password: password));
         } else {
-          context.read<AuthBloc>().add(
-              SignUpRequested(name: name, email: username, password: password));
+          if (context.mounted) {
+            context.read<AuthBloc>().add(SignUpRequested(
+                name: name, email: username, password: password));
+          }
         }
       }
     }
   }
 
   Future<void> _swap() async {
-    setState(() {
-      isSignedIn = !isSignedIn;
-      formKey.currentState?.reset();
-    });
+    context.read<AuthBloc>().add(SwapEvent());
+    formKey.currentState?.reset();
   }
 
   bool isChecked = false;
@@ -99,7 +97,7 @@ class _MobileFormWidgetState extends State<MobileFormWidget> {
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  !isSignedIn ? "Join Now" : 'Account Login',
+                  !state.isSignedIn ? "Join Now" : 'Account Login',
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
@@ -108,7 +106,7 @@ class _MobileFormWidgetState extends State<MobileFormWidget> {
                 ),
               ),
               const SizedBox(height: 20),
-              if (!isSignedIn) ...[
+              if (!state.isSignedIn) ...[
                 const NameTextFormWidget(),
                 const SizedBox(height: 20),
               ],
@@ -116,7 +114,7 @@ class _MobileFormWidgetState extends State<MobileFormWidget> {
               const SizedBox(),
               const PasswordTextfield(),
               const SizedBox(height: 10),
-              !isSignedIn
+              !state.isSignedIn
                   ? SizedBox()
                   : Row(
                       children: [
@@ -149,9 +147,9 @@ class _MobileFormWidgetState extends State<MobileFormWidget> {
                               style: ElevatedButton.styleFrom(
                                 minimumSize: const Size.fromHeight(50),
                               ),
-                              onPressed: _handleLogin,
+                              onPressed: () => _handleLogin,
                               child: Text(
-                                !isSignedIn ? 'Sign Up' : "Sign In",
+                                !state.isSignedIn ? 'Sign Up' : "Sign In",
                                 style: const TextStyle(fontSize: 20),
                               ),
                             ),
@@ -179,9 +177,9 @@ class _MobileFormWidgetState extends State<MobileFormWidget> {
                       TextButton(
                         onPressed: _swap,
                         child: Text(
-                          !isSignedIn
+                          !state.isSignedIn
                               ? "Return to sign in page"
-                              : "Don't have a card? Sign up now.",
+                              : "Don't have a card ? Sign up now.",
                           style: const TextStyle(
                             fontSize: 16,
                             color: CupertinoColors.activeBlue,

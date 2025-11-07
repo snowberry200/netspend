@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../screens/mobile.dart';
+import '../screens/mobile.dart';
 
 void main() {
   runApp(const MobileHomepage());
@@ -27,7 +27,8 @@ class _MobileHomepageState extends State<MobileHomepage> {
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 210, 210, 230)),
+                      backgroundColor:
+                          const Color.fromARGB(255, 210, 210, 230)),
                   onPressed: () async {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const MobileScreen()));

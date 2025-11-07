@@ -39,3 +39,9 @@ class CheckBoxEvent extends AuthEvent {
   @override
   List<Object?> get props => [isChecked];
 }
+
+class SwapEvent extends AuthEvent {
+  const SwapEvent();
+  @override
+  List<Object?> get props => [];
+}

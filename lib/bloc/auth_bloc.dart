@@ -1,6 +1,6 @@
 import 'package:netspend/bloc/auth_event.dart';
 import 'package:netspend/bloc/auth_state.dart';
-import 'package:netspend/database.dart';
+import 'package:netspend/database/database.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
@@ -11,6 +11,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<CheckAuthStatus>(_onCheckAuthStatus);
     on<SignUpRequested>(_onSignUpRequested);
     on<CheckBoxEvent>(_onCheckBoxState);
+    on<SwapEvent>(_onSwapEvent);
   }
 
   Future<void> _onLoginRequested(
@@ -49,7 +50,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthLoading());
     try {
       await database.signUp(
-          name: event.name, email: event.email, password: event.password);
+          name: event.name, username: event.email, pass: event.password);
       emit(SignUpSuccess(
           email: event.email, name: event.name, password: event.password));
     } catch (e) {
@@ -64,5 +65,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } catch (e) {
       emit(AuthError('Checkbox state error: ${e.toString()}'));
     }
+  }
+
+  Future<void> _onSwapEvent(SwapEvent event, Emitter<AuthState> emit) async {
+    emit(SwapState(isSignInMode: !state.isSignedIn));
   }
 }

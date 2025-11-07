@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../layout.dart';
+import '../layout.dart';
 import 'desktop_homepage.dart';
 import 'mobile_homepage.dart';
 import 'tablet_homepage.dart';

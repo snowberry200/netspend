@@ -1,9 +1,11 @@
 import 'package:equatable/equatable.dart';
 
 abstract class AuthState extends Equatable {
+  bool get isLoading => false;
+  bool get isSignedIn => true;
   const AuthState();
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [isSignedIn, isLoading];
 }
 
 class AuthInitial extends AuthState {}
@@ -18,6 +20,8 @@ class Authenticated extends AuthState {
 
   @override
   List<Object?> get props => [email, password];
+  @override
+  bool get isLoading => true;
 }
 
 class Unauthenticated extends AuthState {
@@ -39,6 +43,8 @@ class SignUpSuccess extends AuthState {
 
   @override
   List<Object?> get props => [name, email, password];
+  @override
+  bool get isLoading => true;
 }
 
 class AuthError extends AuthState {
@@ -57,4 +63,13 @@ class CheckBoxState extends AuthState {
 
   @override
   List<Object?> get props => [isChecked];
+}
+
+class SwapState extends AuthState {
+  final bool isSignInMode;
+  const SwapState({required this.isSignInMode});
+  @override
+  bool get isSignedIn => isSignInMode;
+  @override
+  List<Object?> get props => [isSignInMode];
 }

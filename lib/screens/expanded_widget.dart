@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netspend/bloc/auth_bloc.dart';
 import 'package:netspend/bloc/auth_event.dart';
 import 'package:netspend/bloc/auth_state.dart';
-import 'package:netspend/database.dart';
+import 'package:netspend/database/database.dart';
 import 'package:netspend/widget/name_textfield.dart';
 import 'package:netspend/widget/password_textfield.dart';
 import 'package:netspend/widget/username_textfield.dart';

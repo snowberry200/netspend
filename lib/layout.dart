@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netspend/bloc/auth_bloc.dart';
-import 'package:netspend/database.dart';
+import 'package:netspend/database/database.dart';
 
 import 'screens/desktop.dart';
 import 'screens/mobile.dart';
